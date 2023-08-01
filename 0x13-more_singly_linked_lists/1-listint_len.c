@@ -1,20 +1,20 @@
-#include <stddef.h>
+#include "lists.h"
 
-/* Definition of the linked list node */
-typedef struct listint_s {
-    int data;
-    struct listint_s *next;
-} listint_t;
+/**
+ * listint_len - returns the number of elements in a linked lists
+ * @h: linked list of type listint_t to traverse
+ *
+ * Return: number of nodes
+ */
+size_t listint_len(const listint_t *h)
+{
+	size_t num = 0;
 
-/* Function to calculate the length of the linked list */
-size_t listint_len(const listint_t *h) {
-    size_t count = 0;
-    const listint_t *current = h;
+	while (h)
+	{
+		num++;
+		h = h->next;
+	}
 
-    while (current != NULL) {
-        count++;
-        current = current->next;
-    }
-
-    return count;
+	return (num);
 }
